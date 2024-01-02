@@ -1,4 +1,5 @@
 import Board from "../domain/entity/Board";
+import Card from "../domain/entity/Card";
 import HttpClient from "../infra/Http";
 
 export default class BoardService {
@@ -18,11 +19,11 @@ export default class BoardService {
         // }
         
         // return board
-
+        console.log(id)
         const board = new Board("project a")
-        board.addColumn("Todo", true)
-        board.addColumn("Doing")
-        board.addColumn("Done")
+        board.addColumn(1, "Todo", true)
+        board.addColumn(1, "Doing")
+        board.addColumn(1, "Done")
 
         board.addCard("Todo", "A", 3)
         board.addCard("Todo", "B", 6)
@@ -34,5 +35,9 @@ export default class BoardService {
 
         return board
 
+    }
+
+    async addCard(boardName: string, idColumn: number, card: Card): Promise<void>{
+        console.log('fetching add card')
     }
 }
